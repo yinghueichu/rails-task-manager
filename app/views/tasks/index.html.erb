@@ -1,0 +1,20 @@
+<head>
+  <script src="https://kit.fontawesome.com/f63315e6bb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h2>All my tasks</h2>
+  <ul>
+    <% @tasks.each do |task| %>
+      <li><%= link_to "#{task.title}", task_path(task) %></li>
+      <li><%= link_to "Delete", task_path(task.id), method: :delete, data: { confirm: "Are you sure?"} %></li>
+      <% if task.completed == true %>
+        <i class="far fa-check-square"></i>
+      <% else %>
+        <i class="far fa-square"></i  >
+      <% end %>
+    <% end %>
+  </ul>
+
+  <p><%= link_to "Add a new task", new_task_path %></p>
+</body>
